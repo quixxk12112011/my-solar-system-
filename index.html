@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сонячна система</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #1a1a2e, #16213e);
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            padding: 20px;
+            background: #0f3460;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .planets {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .planet {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            animation: orbit 5s linear infinite;
+        }
+
+        .planet:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        .planet span {
+            position: absolute;
+            top: 130px;
+            font-size: 14px;
+            color: white;
+        }
+
+        #info {
+            margin-top: 20px;
+            padding: 20px;
+            background: #1b1b2f;
+            border-radius: 10px;
+            display: none;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(10px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(10px) rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Сонячна система</h1>
+        <p>Натисни на планету, щоб дізнатися більше!</p>
+    </header>
+    <div class="planets">
+        <div class="planet" style="background: #ffcc00; animation-delay: 0s;" data-info="Сонце - центральна зірка Сонячної системи.">
+            <span>Сонце</span>
+        </div>
+        <div class="planet" style="background: #d4af37; animation-delay: 0.2s;" data-info="Меркурій - найближча планета до Сонця.">
+            <span>Меркурій</span>
+        </div>
+        <div class="planet" style="background: #ffa07a; animation-delay: 0.4s;" data-info="Венера - друга планета від Сонця.">
+            <span>Венера</span>
+        </div>
+        <div class="planet" style="background: #00bfff; animation-delay: 0.6s;" data-info="Земля - єдина планета з життям.">
+            <span>Земля</span>
+        </div>
+        <div class="planet" style="background: #ff4500; animation-delay: 0.8s;" data-info="Марс - червона планета.">
+            <span>Марс</span>
+        </div>
+        <div class="planet" style="background: #f4a460; animation-delay: 1s;" data-info="Юпітер - найбільша планета Сонячної системи.">
+            <span>Юпітер</span>
+        </div>
+        <div class="planet" style="background: #daa520; animation-delay: 1.2s;" data-info="Сатурн - відомий своїми кільцями.">
+            <span>Сатурн</span>
+        </div>
+        <div class="planet" style="background: #4682b4; animation-delay: 1.4s;" data-info="Уран - планета з нахиленою віссю обертання.">
+            <span>Уран</span>
+        </div>
+        <div class="planet" style="background: #4169e1; animation-delay: 1.6s;" data-info="Нептун - найдальша планета Сонячної системи.">
+            <span>Нептун</span>
+        </div>
+    </div>
+    <div id="info"></div>
+    <script>
+        const planets = document.querySelectorAll('.planet');
+        const infoBox = document.getElementById('info');
+
+        planets.forEach(planet => {
+            planet.addEventListener('click', () => {
+                const info = planet.getAttribute('data-info');
+                infoBox.textContent = info;
+                infoBox.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
